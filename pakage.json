@@ -1,3 +1,17 @@
 "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 $ npm login --registry=https://npm.pkg.github.com/
 $ npm publish
+
+cat ~/GH_TOKEN.txt | docker login docker.pkg.github.com -u Bless0073 --password-stdin
+docker tag IMAGE_ID docker.pkg.github.com/bless0073/https-crex24.com-public-chunk.39327c8ff320b9c588ee.js/IMAGE_NAME:VERSION
+$ gem build https-crex24.com-public-chunk.39327c8ff320b9c588ee.js.gemspec
+
+mvn deploy -Dregistry=https://maven.pkg.github.com/Bless0073 -Dtoken=GH_TOKEN
+
+dotnet pack --configuration Release
+dotnet nuget push "bin/Release/https-crex24.com-public-chunk.39327c8ff320b9c588ee.js.1.0.0.nupkg" --source "github"
+
+echo ":github: Bearer GH_TOKEN" >> ~/.gem/credentials
+gem build https-crex24.com-public-chunk.39327c8ff320b9c588ee.js.gemspec
+gem push --key github --host https://rubygems.pkg.github.com/Bless0073 https-crex24.com-public-chunk.39327c8ff320b9c588ee.js-1.0.0.gem
+
